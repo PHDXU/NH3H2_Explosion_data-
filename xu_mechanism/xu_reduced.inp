@@ -1,0 +1,354 @@
+!Combustion chemistry of ammonia/hydrogen mixtures: Jet-stirred reactor measurements and comprehensive kinetic modeling
+!Xiaoyuan Zhang, Shamjad P. Moosakutty, Rajitha P. Rajan, Mourad Younes, S. Mani Sarathy
+!Contanct: xiaoyuan.zhang@kaust.edu.sa
+ELEMENTS
+O H N 
+END
+SPECIES
+N2 H H2 O OH 
+H2O HO2 O2 N NH 
+NH2 NH3 NNH NO N2O 
+HNO 
+END
+
+THERMO ALL
+  300.000  1000.000  5000.000
+N2                      N   2               G     300.0    5000.0  1000.0      1
+      2.92664E0   1.4879768E-3    -5.68476E-7  1.0097038E-10  -6.753351E-15    2
+    -9.227977E2     5.980528E0     3.298677E0   1.4082404E-3   -3.963222E-6    3
+    5.641515E-9  -2.444854E-12   -1.0208999E3     3.950372E0                   4
+H                       H   1               G     200.0    3500.0  1000.0      1
+   2.50000001E0-2.30842973E-11 1.61561948E-14-4.73515235E-18 4.98197357E-22    2
+   2.54736599E4 -4.46682914E-1          2.5E0 7.05332819E-13-1.99591964E-15    3
+ 2.30081632E-18-9.27732332E-22   2.54736599E4 -4.46682853E-1                   4
+H2                      H   2               G     200.0    3500.0  1000.0      1
+    3.3372792E0 -4.94024731E-5  4.99456778E-7-1.79566394E-10 2.00255376E-14    2
+  -9.50158922E2  -3.20502331E0   2.34433112E0  7.98052075E-3  -1.9478151E-5    3
+  2.01572094E-8-7.37611761E-12  -9.17935173E2  6.83010238E-1                   4
+O                       O   1               G     200.0    3500.0  1000.0      1
+   2.56942078E0 -8.59741137E-5  4.19484589E-8-1.00177799E-11 1.22833691E-15    2
+   2.92175791E4   4.78433864E0    3.1682671E0 -3.27931884E-3  6.64306396E-6    3
+ -6.12806624E-9 2.11265971E-12   2.91222592E4   2.05193346E0                   4
+OH                      H   1O   1          G     200.0    6000.0  1000.0      1
+   2.86472886E0  1.05650448E-3 -2.59082758E-7 3.05218674E-11-1.33195876E-15    2
+   3.71885774E3   5.70164073E0   4.12530561E0 -3.22544939E-3  6.52764691E-6    3
+ -5.79853643E-9 2.06237379E-12   3.38153812E3  -6.9043296E-1                   4
+H2O                     H   2O   1          G     200.0    3500.0  1000.0      1
+   3.03399249E0  2.17691804E-3 -1.64072518E-7 -9.7041987E-11 1.68200992E-14    2
+  -3.00042971E4    4.9667701E0   4.19864056E0  -2.0364341E-3  6.52040211E-6    3
+ -5.48797062E-9 1.77197817E-12  -3.02937267E4 -8.49032208E-1                   4
+HO2                     H   1O   2          G     200.0    3500.0  1000.0      1
+    4.0172109E0  2.23982013E-3  -6.3365815E-7  1.1424637E-10-1.07908535E-14    2
+   1.11856713E2   3.78510215E0   4.30179801E0 -4.74912051E-3  2.11582891E-5    3
+ -2.42763894E-8 9.29225124E-12    2.9480804E2   3.71666245E0                   4
+O2                      O   2               G     200.0    3500.0  1000.0      1
+   3.28253784E0  1.48308754E-3 -7.57966669E-7 2.09470555E-10-2.16717794E-14    2
+  -1.08845772E3   5.45323129E0   3.78245636E0 -2.99673416E-3  9.84730201E-6    3
+ -9.68129509E-9 3.24372837E-12  -1.06394356E3   3.65767573E0                   4
+! Lamoureux et al. 2016
+N                 120186N   1               G     300.0    5000.0  1000.0      1
+     2.450268E0    1.066146E-4   -7.465337E-8   1.879652E-11  -1.025984E-15    2
+     5.611604E4     4.448758E0     2.503071E0   -2.180018E-5    5.420529E-8    3
+   -5.64756E-11   2.099904E-14      5.60989E4     4.167566E0                   4
+NH                      H   1N   1          G    298.15    2000.0  1000.0      1
+   3.38393047E0 -3.04401048E-4  1.07871576E-6-5.39749068E-10 8.56574985E-14    2
+   4.18557586E4   2.60065696E0   3.49138447E0  2.48105072E-4 -1.22352658E-6    3
+  1.97740127E-9-7.89210613E-13   4.17851517E4   1.83667301E0                   4
+NH2                     H   2N   1          G    298.15    2000.0  1000.0      1
+    3.8075146E0  1.74138848E-4  2.06281679E-6 -1.18308148E-9 2.00814234E-13    2
+   2.12757238E4   1.57634407E0   4.02590054E0 -9.53251946E-4  4.13467348E-6    3
+ -2.81816628E-9 6.73047183E-13    2.1244739E4  5.86219857E-1                   4
+! Lamoureux 2016
+NH3               121386H   3N   1          G     300.0    5000.0  1000.0      1
+     2.461904E0    6.059166E-3   -2.004977E-6   3.136003E-10  -1.938317E-14    2
+     -6.49327E3     7.472097E0     2.204352E0    1.011476E-2   -1.465265E-5    3
+    1.447235E-8  -5.328509E-12    -6.525488E3     8.127138E0                   4
+NNH                     H   1N   2          G    298.15    2000.0  1000.0      1
+   2.78024159E0  4.51114118E-3 -1.98147075E-6 3.61161241E-10-1.55679242E-14    2
+   2.93473063E4   9.91752869E0   3.86231284E0 -4.41898698E-4  6.38522141E-6    3
+ -5.84138844E-9 1.69125822E-12   2.91621298E4   4.85334915E0                   4
+! Lamoureux et al. 2016
+NO                121286N   1O   1          G     300.0    5000.0  1000.0      1
+     3.245435E0    1.269138E-3    -5.01589E-7   9.169283E-11  -6.275419E-15    2
+      9.80084E3     6.417294E0     3.376542E0    1.253063E-3   -3.302751E-6    3
+     5.21781E-9  -2.446263E-12     9.817961E3      5.82959E0                   4
+! Lamoureux et al. 2016
+N2O               121286N   2O   1          G     300.0    5000.0  1000.0      1
+     4.718977E0    2.873714E-3   -1.197496E-6   2.250552E-10  -1.575337E-14    2
+     8.165811E3     -1.65725E0     2.543058E0    9.492193E-3   -9.792775E-6    3
+    6.263845E-9  -1.901826E-12       8.7651E3     9.511222E0                   4
+!see the comment
+! Lamoureux et al. 2016
+HNO               121286H   1N   1O   1     G     300.0    5000.0  1000.0      1
+     3.615144E0    3.212486E-3   -1.260337E-6   2.267298E-10  -1.536236E-14    2
+     1.066191E4     4.810264E0     2.784403E0    6.609646E-3   -9.300223E-6    3
+     9.43798E-9  -3.753146E-12     1.091878E4     9.035629E0                   4
+END
+
+TRANSPORT ALL
+N2 1 97.53 3.621 0.0 1.76 4.0
+H 0 145.0 2.05 0.0 0.0 0.0
+H2 1 38.0 2.92 0.0 0.79 280.0
+O 0 80.0 2.75 0.0 0.0 0.0
+OH 1 80.0 2.75 0.0 0.0 0.0
+H2O 2 572.4 2.605 1.844 0.0 4.0
+HO2 2 107.4 3.458 0.0 0.0 1.0
+O2 1 107.4 3.458 0.0 1.6 3.8
+N 0 71.4 3.298 0.0 0.0 0.0
+NH 1 80.0 2.65 0.0 0.0 4.0
+NH2 2 80.0 2.65 0.0 2.26 4.0
+NH3 2 481.0 2.92 1.47 0.0 10.0
+NNH 2 71.4 3.798 0.0 0.0 1.0
+NO 1 97.53 3.621 0.0 1.76 4.0
+N2O 1 232.4 3.828 0.0 0.0 1.0
+HNO 2 116.7 3.492 0.0 0.0 1.0
+END
+
+REACTIONS MOLES CAL/MOLE
+!************************ H2/CO mechanism**************************************
+!======================
+!H2-O2 Chain Reactions
+!======================
+! Hong et al., Proc. Comb. Inst. 33:309-316 (2011)
+H+O2=O+OH    1.0E14 0.0 1.5286E4
+! Baulch et al., J. Phys. Chem. Ref. Data, 21:411 (1992)
+O+H2=OH+H    3.8E12 0.0 7.948E3
+    DUP
+O+H2=OH+H    8.8E14 0.0 1.9175E4
+    DUP
+! Michael and Sutherland, J. Phys. Chem. 92:3853 (1988)
+OH+H2=H+H2O    2.2E8 1.51 3.43E3
+! M. Sangwan, L. N. Krasnoperov, The Journal of Physical Chemistry A 116 (2012) 11817?1822.
+2OH=O+H2O    2.0E7 1.651 6.31E2
+    DUP
+2OH=O+H2O    2.6E11 -0.057 -8.27E2
+    DUP
+! HH: Refitted (400-3000 K) for better stability of the solvers (avoiding negative 'A') 16-04-08
+!============================
+!H2-O2 Dissociation Reactions
+!============================
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986)
+H2+M=2H+M    4.6E19 -1.4 1.0438E5
+    H2/2.5/
+    H2O/12.0/
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986)
+!O+O+M = O2+M                                	6.165E+15 -0.50  0.000E+00
+2O+M=O2+M    1.9E13 0.0 -1.788E3
+    H2/2.5/
+    H2O/12.0/
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986)
+H+O+M=OH+M    4.7E18 -1.0 0.0E0
+    H2/2.5/
+    H2O/12.0/
+! Srinivasan and Michael, Int. J. Chem. Kinetic. 38 (2006)
+! Rate constant is for Ar with efficiencies from Michael et al., J. Phys. Chem. A, 106 (2002)
+H2O+M=H+OH+M    6.1E27 -3.322 1.2079E5
+    H2/3.0/
+    H2O/0.0/
+    N2/2.0/
+    O2/1.5/
+! Srinivasan and Michael, Int. J. Chem. Kinetic. 38 (2006)
+2H2O=H+OH+H2O    1.0E26 -2.44 1.2018E5
+!=================================
+! Formation and consumption of HO2
+!=================================
+! High-pressure limit from Troe, Proc. Comb. Inst. 28:1463-1469 (2000)
+! Low-pressure  limit from Michael et al., J. Phys. Chem. A 106:5297-5313
+! Centering factors from Fernandes et al., Phys. Chem. Chem. Phys. 10:4313-4321 (2008)
+!=================================================================================
+! MAIN BATH GAS IS N2 (comment this reaction otherwise)
+H+O2(+M)=HO2(+M)    4.7E12 0.44 0.0E0
+    H2/2.0/
+    H2O/14.0/
+    O2/0.78/
+    LOW/6.366E20 -1.72E0 5.248E2/
+    TROE/5.0E-1 1.0E-30 1.0E30/
+!=================================================================================
+! MAIN BATH GAS IS AR OR HE (comment this reaction otherwise)
+!H+O2(+M)=HO2(+M)                     4.7E12   0.440       0 !
+! LOW/9.042E19 -1.50  4.922E02/
+! TROE/0.5 1E-30  1E30/
+!   H2/3.0/ H2O/21/ O2/1.1/ CO/2.7/ CO2/5.4/ HE/1.2/ N2/1.5/
+!=================================================================================
+! Michael et al., Proc. Comb. Inst. 28:1471 (2000)
+!HO2+H = H2+O2                                 	3.659E+06  2.09 -1.451E+03
+!Scaled by 0.75
+HO2+H=H2+O2    2.8E6 2.09 -1.451E3
+! Mueller et al., Int. J. Chem. Kinetic. 31:113 (1999)
+HO2+H=2OH    7.1E13 0.0 2.95E2
+HO2+H=H2O+O    1.4E12 0.0 0.0E0
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+! Fernandez-Ramos and Varandas, J. Phys. Chem. A 106:4077-4083 (2002)
+!HO2+O = O2+OH                               	4.750E+10  1.00 -7.2393E+02
+!Scaled by 0.60
+HO2+O=O2+OH    2.9E10 1.0 -7.24E2
+! M. P. Burke, S. J. Klippenstein, L. B. Harding, Proceedings of the Combustion Institute 34 (2013) 547?55.
+HO2+OH=H2O+O2    1.9E20 -2.49 5.84E2
+    DUP
+HO2+OH=H2O+O2    1.2E9 1.24 -1.31E3
+    DUP
+!M. Burke, S. Klippenstein, Nature Chemistry, 9, 1078 C1082 (2017)
+2H+O2=H2+O2    8.8E22 -1.835 8.0E2
+2H+O2=2OH    4.0E22 -1.835 8.0E2
+H+O2+O=OH+O2    7.35E22 -1.835 8.0E2
+H+O2+OH=H2O+O2    2.56E22 -1.835 8.0E2
+!!***********************************THE REACTIONS OF NH3***********************************
+!-----------------------N/N2 REACTIONS-----------------------------------------
+!------------------------------------------------------------------------------
+! Lamoureux 2016
+N2+M=2N+M    1.89E18 -0.85 2.25E5
+    H2O/16.25/
+! Lamoureux 2016
+N+O+M=NO+M    7.6E14 -0.1 -1.77E3
+    H2O/16.25/
+! Baulch 2005 A/6.400E+09 error (+/-0.2-0.5) 280-1500 K also used by Lamoureux 2016/Vandooren 1994
+N+O2=NO+O    5.841E9 1.01 6.202E3
+! Baulch 2005 A/1.084E+14 error (+/-0.1-0.4) 100-2500 K
+N+OH=NO+H    1.084E14 -0.2 0.0E0
+! Baulch 2005 A/2.100E+13 error (+/-0.3) 210-3700 K also used by Tian 2009/KLIMIC2011
+N+NO=N2+O    3.2E13 0.0 0.0E0
+!------------------------------------------------------------------------------
+!---------------NH REACTIONS---------------------------------------------------!
+!------------------------------------------------------------------------------
+!C.-X. Yao, P.-Y. Zhang, Z.-X. Duan, G.-J. Zhao, Theoretical Chemistry Accounts 133 (2014) 1489.
+NH+H=N+H2    1.65E11 0.71 9.31E2
+!R. Guadagnini, G.C. Schatz, S.P. Walch, J. Chem. Phys. 102 (1995) 784-791.
+NH+O=NO+H    4.82E13 0.023 9.5E1
+NH+O=N+OH    2.07E10 0.622 -3.58E2
+!
+!S.J. Klippenstein, et al., JPCA 113 (2009) 10241-10259.
+NH+OH=HNO+H    3.25E14 -0.376 -4.6E1
+NH+OH=N+H2O    1.59E7 1.733 -5.76E2
+!
+!O. Elishav, Progress and Prospective of Nitrogen-Based Alternative Fuels, Chemical Reviews 120 (2020) 5352-5436.
+NH+O2=HNO+O    3.32E9 1.034 1.142E4
+!H.J. R  mming, Proc. Combust. Inst. 26 (1996) 559-566.
+NH+O2=NO+OH    4.5E8 0.79 1.195E3
+!Klippenstein et al J Phys Chem A 113 10241-10259 (2009)
+!High-Pressure rate, dissociation of N2H2 (10%)
+2NH=>N2+H2    6.26E12 -0.036 -1.609E2
+!High-Pressure rate, dissociation of N2H2 (90%)
+2NH=>N2+2H    5.634E13 -0.036 -1.609E2
+!
+! KLIMIC2011 cited Skreiberg 2004
+NH+N=N2+H    3.0E13 0.0 0.0E0
+!Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+NH+NO=N2O+H    2.7E15 -0.78 2.0E1
+NH+NO=N2+OH    6.8E14 -0.78 2.0E1
+! Duynslaegher 2012
+NH+N2O=N2+HNO    2.0E12 0.0 6.0E3
+!------------------------------------------------------------------------------
+!----------------------NH2 REACTIONS-------------------------------------------
+!------------------------------------------------------------------------------
+!J. Deppe, Berichte der Bunsengesellschaft f  r physikalische Chemie 102 (1998) 1474-1485.
+NH2+M=NH+H+M    1.2E15 0.0 7.600275E4
+!Y. Li, S.M. Sarathy, Int. J. Hydrogen Energy 45 (2020) 23624-23637.
+NH2+H=NH+H2    1.09E5 2.59 1.8123264E3
+!S. Inomata, N. Washida, J. Phys. Chem. A 103 (1999) 5023-5031.
+NH2+O=NH+OH    7.23E12 0.0 0.0E0
+!Sumathi, R., et al. J Phys Chem A, 102(18), 3175-3183. (1998)
+NH2+O=HNO+H    1.5E15 -0.547 8.367E2
+    DUP
+NH2+O=HNO+H    7.73E13 -0.277 6.464E2
+    DUP
+!Y. Li, S.M. Sarathy, Int. J. Hydrogen Energy 45 (2020) 23624-23637.
+NH2+OH=NH+H2O    4.04E4 2.52 -6.16032E2
+!J.E. Chavarrio, M. Monge-Palacios, X. Zhang, S.M. Sarathy, Probing the gas-phase oxidation of ammonia - I: Addressing uncertainties with theoretical calculations, Combust. Flame, (2021) submitted.
+NH2+HO2=NH3+O2    2.18E6 2.08 -4.76E3
+NH2+O2=HNO+OH    2.9E-2 3.764 1.8185E4
+!P. Dransfeld and H. Gg. Wagner Zeitschrift f  r Physikalische Chemie, 153 (1987) 89.
+NH2+N=N2+2H    6.9E13 0.0 0.0E0
+!S.J. Klippenstein, L.B. Harding, P. Glarborg, J.A. Miller, Combustion and Flame 158 (2011) 774-789.
+NH2+NO=NNH+OH    3.1E13 -0.48 1.18E3
+NH2+NO=N2+H2O    1.3E16 -1.25 0.0E0
+    DUP
+NH2+NO=N2+H2O    -3.1E13 -0.48 1.18E3
+    DUP
+!S. Xu, M.C. Lin, Int J Chem Kinet 41: 667 677, 2009. 550-3000 K
+NH2+HNO=NH3+NO    5.9E2 2.95 -3.469E3
+!
+! KLIMIC2009, 300-2500 K
+2NH=NH2+N    5.7E-1 3.88 3.42E2
+! KLIMIC2009 300-2500 K
+2NH2=NH3+NH    5.636E0 3.53 5.526E2
+! KLIMIC2009 200-2500 K
+NH2+NH=NH3+N    9.574E3 2.46 1.073E2
+!-------------------------------------------------------------------------------
+!-----------------------NH3 REACTIONS-------------------------------------------!
+!-------------------------------------------------------------------------------
+!D.F. Davidson, K. Kohse-H  inghaus, A.Y. Chang, R.K. Hanson, IJCK 22 (1990) 513-535.
+NH3+M=NH2+H+M    2.2E16 0.0 9.347E4
+!T.L. Nguyen, J.F. Stanton, Ab initio thermal rate coefficients for H + NH3 = H2 + NH2, International Journal of Chemical Kinetics 51 (2019) 321-328.
+NH3+H=NH2+H2    2.89E6 2.23 1.04E4
+!Stagni, A. et al. React. Chem. Eng. doi:10.1039/C9RE00429G(2020). !ZXY_Stagni, A. et al. React. Chem. Eng. doi:10.1039/C9RE00429G(2020).
+NH3+OH=H2O+NH2    1.559E5 2.372 1.189E2
+NH3+O=NH2+OH    4.43E2 3.18 6.7399E3
+!
+!------------------------------------------------------------------------------
+!--------------------NNH REACTIONS---------------------------------------------
+!------------------------------------------------------------------------------
+!H. Koizumi , G.C. Schatz , S.P. Walch , J. Chem. Phys. 95 (1991) 4130   4135.
+NNH=N2+H    3.3E8 0.0 0.0E0
+!J.A. Miller, C.T. Bowman, Prog. Energy Combust. Sci. 15 (1989) 287-338.
+NNH+H=N2+H2    1.0E14 0.0 0.0E0
+NNH+OH=N2+H2O    5.0E13 0.0 0.0E0
+!5.000E+13  ZXY_modified_20200903
+NNH+NO=N2+HNO    5.0E12 0.0 0.0E0
+NNH+NH=N2+NH2    5.0E13 0.0 0.0E0
+NNH+NH2=N2+NH3    5.0E13 0.0 0.0E0
+!S.J. Klippenstein, et al., Combust. Flame 158 (2011) 774-789.
+NNH+O=N2O+H    1.87E14 -0.274 -2.2E1
+NNH+O=NH+NO    5.18E11 0.388 -4.09E2
+NNH+O=N2+OH    1.2E13 0.145 -2.17E2
+NNH+O2=N2+HO2    5.6E14 -0.385 -1.3E1
+!-----------------------------------------------------------------------------
+!-------------------------HNO REACTIONS --------------------------------------
+!-----------------------------------------------------------------------------
+!Stagni, A. et al. React. Chem. Eng. doi:10.1039/C9RE00429G(2020).
+HNO=H+NO    1.8259E20 -3.008 4.788E4
+    PLOG/1.0E-1 2.0121E19 -3.021E0 4.7792E4/
+    PLOG/1.0E0 1.8259E20 -3.008E0 4.788E4/
+    PLOG/1.0E1 1.2762E21 -2.959E0 4.81E4/
+    PLOG/1.0E2 5.6445E21 -2.855E0 4.8459E4/
+    PLOG/1.0E3 9.7111E21 -2.642E0 4.894E4/
+!S. Inomata, J. Phys. Chem. A, 103 (1999) 5023-5031.
+HNO+O=NO+OH    2.3E13 0.0 0.0E0
+!M.R. Soto, J. Chem. Phys. 97 (1992) 7287-7296.
+HNO+H=NO+H2    4.4E11 0.72 6.5E2
+!J.A. Miller, C.T. Bowman, Prog. Energ. Combust. Sci. 15 (1989) 287-338.
+HNO+OH=NO+H2O    3.6E13 0.0 0.0E0
+!A.M. Dean, J.W. Bozzelli, Springer New York, New York, NY, 2000, pp. 125-341.
+HNO+O2=NO+HO2    2.0E13 0.0 1.6E4
+! Klaus 1997 also used by Lamoureux 2016/Mathieu 2015
+HNO+N=NO+NH    1.0E13 0.0 1.99E3
+! Coppens 2007/Konnov 2009
+HNO+N=N2O+H    5.0E10 0.5 3.0E3
+! Coppens 2007 also used by Konnov 2009
+HNO+NH=NH2+NO    5.0E11 0.5 0.0E0
+!Diau, E.W.; Halbgewachs, M.J.; Smith, A.R.; Lin, M.C.  Int. J. Chem. Kinet. 27 867-881 (1995)
+HNO+NO=N2O+OH    8.51E12 0.0 2.961E4
+!Tsang, W.; Herron, J.T. J. Phys. Chem. Ref. Data 20 609-663 (1991)
+2HNO=N2O+H2O    9.0E8 0.0 3.1E3
+!-------------------------------------------------------------------------------
+!-----------------------N2O REACTIONS-------------------------------------------
+!-------------------------------------------------------------------------------
+! R?hrig 1996 also used by Tian 2009/Zhang 2011/KLIMIC2011
+N2O(+M)=N2+O(+M)    1.3E12 0.0 6.257E4
+    N2/1.7/
+    O2/1.4/
+    H2O/12.0/
+    LOW/4.0E14 0.0E0 5.66E4/
+! Powell 2010 modified the rate of Baulch 2005
+N2O+H=N2+OH    2.53E10 0.0 4.55E3
+    DUP
+N2O+H=N2+OH    5.0E14 0.0 1.81E4
+    DUP
+! Baulch 2005 A/9.200E+13 error(+/-0.2-0.4) 1000-4000K
+N2O+O=2NO    9.2E13 0.0 2.767E4
+! Baulch 2005 A/3.700E+12 error(+/-0.2-0.5) 1000-2500K
+N2O+O=N2+O2    3.7E12 0.0 1.593E4
+! Mebel et al.;IJCK 1996, 28, 693 C703 also used by Tian 2009/KLIMIC2011/Zhang 2011
+N2O+OH=N2+HO2    1.3E-2 4.7 3.656E4
+! Mathieu 2015
+N2O+N=N2+NO    1.0E13 0.0 1.987E4
+END
